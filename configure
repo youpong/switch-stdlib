@@ -90,9 +90,9 @@ if [[ -n $with_cxx_standard_library ]]; then
         echo "WARN: Ignore the specified with-cxx-standard-library option since g++ does not support the stdlib option."
     elif [[ $CXX == 'clang++' && $BUILD == 'macOS' ]]; then
         echo "WARN: Ignore the specified with-cxx-standard-library option since clang++ on macOS does not support the stdlib option."
+    else
+        CXXFLAGS="$CXXFLAGS -stdlib=$with_cxx_standard_library"
     fi
-
-    CXXFLAGS="$CXXFLAGS -stdlib=$with_cxx_standard_library"
 fi
 
 for f in Makefile
