@@ -85,16 +85,12 @@ ubuntu ) ;;
 *      ) ;;
 esac
 
-if [[ $CXX == 'g++' && -n $with_cxx_standard_library ]]; then
-    echo "WARN: Ignore the specified with-cxx-standard-library option since g++ does not support the stdlib option."
-fi
-
-if [[ $CXX == 'clang++' ]]; then
-    case "$with_cxx_standard_library" in
-    libstdc++) CXXFLAGS="$CXXFLAGS -stdlib=libstdc++" ;;
-    libc++   ) CXXFLAGS="$CXXFLAGS -stdlib=libc++" ;;
-    * )        echo "unknown C++ standard library: $with_cxx_standard_library"
-            exit 1 ;;
+if [[ -n $with_cxx_standard_library ]]; then
+    case "$CXX" in
+    'g++' )
+        echo "WARN: Ignore the specified with-cxx-standard-library option since g++ does not support the stdlib option." ;;
+    * )
+        CXXFLAGS="$CXXFLAGS -stdlib=libstdc++"
     esac
 fi
 
