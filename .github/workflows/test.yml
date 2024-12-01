@@ -25,7 +25,12 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: brew install gnu-getopt
     - name: configure
-      run: ./configure --with-cxx=${{ matrix.cxx }} --with-cxx-standard-library=${{ matrix.stdlib }}
+      run: |
+        if [[ ${{ runner.os }} == "macOS" ]]; then
+          ./configure --with-cxx=${{ matrix.cxx }}
+        else
+          ./configure --with-cxx=${{ matrix.cxx }} --with-cxx-standard-library=${{ matrix.stdlib }}
+        fi
     - name: build
       run: make
     - name: check
