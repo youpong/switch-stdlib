@@ -1,0 +1,29 @@
+name: Testing
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+
+jobs:
+  test:
+    continue-on-error: true
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        cxx: [ g++, clang++ ]
+        stdlib: [ libstdc++, libc++ ]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: configure
+      run: ./configure --with-cxx=${{ matrix.cxx }} --with-cxx-standard-library=${{ matrix.stdlib }}
+    - name: build
+      run: make
+    - name: check
+      run: make check
