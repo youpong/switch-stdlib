@@ -24,11 +24,7 @@ jobs:
     - name: Install GNU Getopt on macOS
       if: runner.os == 'macOS'
       run: brew install gnu-getopt
-    - name: configure on macOS
-      if: runner.os == 'macOS'
-      run: ./configure --with-cxx=${{ matrix.cxx }}
-    - name: configure on Other OS
-      if: runner.os != 'macOS'
+    - name: configure
       run: ./configure --with-cxx=${{ matrix.cxx }} --with-cxx-standard-library=${{ matrix.stdlib }}
     - name: build
       run: make
