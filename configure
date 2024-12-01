@@ -55,7 +55,7 @@ eval set -- "$parsed_arguments"
 while true; do
     case "$1" in
     -h | --help     ) help_option=1                 ; shift   ;;
-         --build    ) BUILD="$2"                    ; shift   ;;
+         --build    ) BUILD="$2"                    ; shift 2 ;;
          --with-cxx ) CXX="$2"                      ; shift 2 ;;
          --with-cxx-standard-library )
                       with_cxx_standard_library="$2"; shift 2 ;;
