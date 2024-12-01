@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install GNU Getopt on macOS
-      if: runner.os == 'macos-latest'
+      if: runner.os == 'macOS'
       run: brew install gnu-getopt
     - name: configure
       run: |
