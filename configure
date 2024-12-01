@@ -86,12 +86,13 @@ ubuntu ) ;;
 esac
 
 if [[ -n $with_cxx_standard_library ]]; then
-    case "$CXX" in
-    'g++' )
-        echo "WARN: Ignore the specified with-cxx-standard-library option since g++ does not support the stdlib option." ;;
-    * )
-        CXXFLAGS="$CXXFLAGS -stdlib=libstdc++"
-    esac
+    if [[ $CXX == 'g++' ]]; then
+        echo "WARN: Ignore the specified with-cxx-standard-library option since g++ does not support the stdlib option."
+    elif [[ $CXX == 'clang++' && $BUILD == 'macOS' ]]; then
+        echo "WARN: Ignore the specified with-cxx-standard-library option since clang++ on macOS does not support the stdlib option."
+    fi
+
+    CXXFLAGS="$CXXFLAGS -stdlib=$with_cxx_standard_library"
 fi
 
 for f in Makefile
