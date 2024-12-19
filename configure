@@ -79,11 +79,11 @@ if [[ $help_option == 1 ]]; then
 fi
 
 if [[ -n $with_cxx_standard_library ]]; then
-    if [[ $BUILD == 'macOS' ]]; then
-        echo "WARN: Ignore the specified option with-cxx-standard-library on macOS"
-    else
-        LIBS=-l${with_cxx_standard_library#lib}
-    fi
+#    if [[ $BUILD == 'macOS' ]]; then
+#        echo "WARN: Ignore the specified option with-cxx-standard-library on macOS"
+#    else
+    LIBS=-l${with_cxx_standard_library#lib}
+#    fi
 fi
 
 for f in Makefile
