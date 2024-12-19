@@ -5,7 +5,7 @@ set -o nounset
 
 PROJECT=randome_engine
 BUILD=${BUILD:-}
-CXX="c++"
+CXX=${CXX:-c++}
 CXXFLAGS=${CXXFLAGS:-"-v -std=c++20 -Wall -Wextra --pedantic-errors"}
 
 LIBS=${LIBS:-}           
