@@ -6,7 +6,7 @@ RUN apt-get update &&\
     apt-get install -y --no-install-recommends \
             adduser sudo \
             g++ gdb \
-            clang lldb clang-tidy clang-format \
+            clang libc++-dev lldb clang-tidy clang-format \
             make doxygen graphviz &&\
     apt-get -y clean &&\
     rm -rf /var/lib/apt/lists/*
