@@ -2,12 +2,19 @@ CXX = @CXX@
 CXXFLAGS = @CXXFLAGS@
 
 TARGET = main
+SRCS = main.cpp
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(TARGET)
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(OBJS)
 check: $(TARGET)
 	./$(TARGET)
 	@echo "*** Test passed. ***"
+
+$(TARGET): $(OBJS)
+	$(CXX) -o $@ $^
+.cpp.o:
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 .PHONY: all check clean
