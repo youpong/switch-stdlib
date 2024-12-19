@@ -1,5 +1,6 @@
 CXX = @CXX@
 CXXFLAGS = @CXXFLAGS@
+LIBS = @LIBS@
 
 TARGET = main
 SRCS = main.cpp
@@ -13,7 +14,7 @@ check: $(TARGET)
 	@echo "*** Test passed. ***"
 
 $(TARGET): $(OBJS)
-	$(CXX) -o $@ $^
+	$(CXX) -o $@ $^ $(LIBS)
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 

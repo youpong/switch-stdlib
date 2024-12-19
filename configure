@@ -6,8 +6,7 @@ set -o nounset
 PROJECT=randome_engine
 BUILD=${BUILD:-}
 CXX=${CXX:-c++}
-CXXFLAGS=${CXXFLAGS:-"-v -std=c++20 -Wall -Wextra --pedantic-errors"}
-
+CXXFLAGS=${CXXFLAGS:-"-std=c++20 -Wall -Wextra --pedantic-errors"}
 LIBS=${LIBS:-}           
 
 if [[ -d "/usr/local/opt/gnu-getopt/bin" ]]; then
@@ -91,7 +90,7 @@ if [[ -n $with_cxx_standard_library ]]; then
     elif [[ $CXX == 'clang++' && $BUILD == 'macOS' ]]; then
         echo "WARN: Ignore the specified with-cxx-standard-library option since clang++ on macOS does not support the stdlib option."
     else
-        CXXFLAGS="$CXXFLAGS -stdlib=$with_cxx_standard_library"
+        LIBS=-l${with_cxx_standard_library#lib}
     fi
 fi
 
