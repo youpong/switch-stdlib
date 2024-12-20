@@ -4,12 +4,12 @@ This project is a C++ example designed to demonstrate flexibility in linking dif
 implementations of the C++ standard library. You can choose between **libstdc++**,
 provided by the GNU project, and **libc++**, developed by the LLVM project.
 
-* Requisite
+## Requisite
 
 This project is written in C++20, you will need a recent version of a C++ compiler and
 C++ standard library. 
 
-# Tested Environment
+## Tested Environment
 
 We are testing in the following environments:
 
@@ -39,19 +39,20 @@ The output of the following command shows the results of the test.
 $ make check
 ```
 
-# Docker
+## Docker
 
-## Build Docker image `swlib`
+### Build Docker image `swlib`
 
 ```
 $ docker build -t swlib .
 ```
 
-## Create and run a new container from an image
+### Create and run a new container from an image
+
 ```
 $ docker run --rm -it -v $PWD:/swlib -w /swlib swlib 
 ```
 
-# License
+## License
 
 MIT
