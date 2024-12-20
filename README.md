@@ -1,28 +1,32 @@
 # README
 
-このプロジェクトは C++ のサンプルプロジェクトです。リンクする C++ 標準ライブラリを GNU プロジェクトの libstdc++ と LLVM プロジェクトの libc++から選択できるようにしています。
+This project is a C++ example project. It allows you to choose the implementation of
+the C++ standard library to link from libstdc++ of the GNU project and libc++ of the LLVM project.
 
 * Requisite
 
-written in C++20, you will need a recent version of a C++ compiler and C++ standard 
-library. 
+This project is written in C++20, you will need a recent version of a C++ compiler and
+C++ standard library. 
 
 # Tested Environment
 
-macOS と Linux でテストしている。より詳細には以下の通り。
+We are testing in the following environments:
 
 * macOS 15.2
-* Xcode 16.2
-* Apple clang 16.0.0
-
+  * Xcode 16.2 (using the bundled Apple Clang 16.0.0)
 * Ubuntu 24.04.1 LTS
-* gcc 13.3.0
-* clang 18.1.3
+  * GCC 13.3.0
+  * Clang 18.1.3
 
-## Build
+## How to Build
+
+C++ standard library に libc++ をリンクさせることを例にビルドの手順を説明します。
+libstdc++ とリンクさせる場合には --with-cxx-standard-library オプションの値を
+変えてください。
 
 ```
-$ make 
+$ ./configure --with-cxx=clang++ --with-cxx-standard-library=libc++
+$ make
 ```
 
 ## Test
@@ -30,19 +34,19 @@ $ make
 ```
 $ make check
 ```
-
+テストにパスするとその旨が表示されます。
 
 # Docker
 
-## Build Docker image `random`
+## Build Docker image `swlib`
 
 ```
-$ docker build -t random .
+$ docker build -t swlib .
 ```
 
 ## Create and run a new container from an image
 ```
-$ docker run --rm -it -v $PWD:/random -w /random random 
+$ docker run --rm -it -v $PWD:/swlib -w /swlib swlib 
 ```
 
 # References
