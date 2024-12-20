@@ -1,7 +1,8 @@
 # README
 
-This project is a C++ example project. It allows you to choose the implementation of
-the C++ standard library to link from libstdc++ of the GNU project and libc++ of the LLVM project.
+This project is a C++ example designed to demonstrate flexibility in linking different
+implementations of the C++ standard library. You can choose between **libstdc++**,
+provided by the GNU project, and **libc++**, developed by the LLVM project.
 
 * Requisite
 
