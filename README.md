@@ -20,9 +20,10 @@ We are testing in the following environments:
 
 ## How to Build
 
-C++ standard library に libc++ をリンクさせることを例にビルドの手順を説明します。
-libstdc++ とリンクさせる場合には --with-cxx-standard-library オプションの値を
-変えてください。
+The following build procedure is described using the example of linking with libc++.
+If you want to link with libstdc++, change the value of the --with-cxx-standard-library
+option.
+Descriptions of the `configure` scripts are available with the --help option.
 
 ```
 $ ./configure --with-cxx=clang++ --with-cxx-standard-library=libc++
@@ -31,10 +32,11 @@ $ make
 
 ## Test
 
+The output of the following command shows the results of the test.
+
 ```
 $ make check
 ```
-テストにパスするとその旨が表示されます。
 
 # Docker
 
@@ -49,11 +51,6 @@ $ docker build -t swlib .
 $ docker run --rm -it -v $PWD:/swlib -w /swlib swlib 
 ```
 
-# References
+# License
 
-Linear congruential generator を実装する際に、特にパラメタの値について参照した。
-
-Linear congruential generator
-Wikipedia
-
-https://en.wikipedia.org/wiki/Linear_congruential_generator#cite_note-LEcuyer99-10
+MIT
