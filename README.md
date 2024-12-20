@@ -1,6 +1,6 @@
 # README
 
-乱数生成器を独自に実装し、標準の乱数分布と組み合わせて使用する方法を実践的に説明する。
+このプロジェクトは C++ のサンプルプロジェクトです。リンクする C++ 標準ライブラリを GNU プロジェクトの libstdc++ と LLVM プロジェクトの libc++から選択できるようにしています。
 
 * Requisite
 
@@ -11,25 +11,24 @@ library.
 
 macOS と Linux でテストしている。より詳細には以下の通り。
 
-* macOS 15.1
-* Xcode 16.1
+* macOS 15.2
+* Xcode 16.2
+* Apple clang 16.0.0
 
 * Ubuntu 24.04.1 LTS
-* gcc 13.2.0
+* gcc 13.3.0
 * clang 18.1.3
 
 ## Build
 
 ```
-$ make main
+$ make 
 ```
 
-## Run
-
-10 回サイコロを振った際の出目を表示する。
+## Test
 
 ```
-$ ./main
+$ make check
 ```
 
 
