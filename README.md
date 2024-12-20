@@ -1,10 +1,10 @@
 # swtch-stdlib
 
 This project is a C++ example designed to demonstrate flexibility in linking different
-implementations of the C++ standard library. You can choose between **libstdc++**,
-provided by the GNU project, and **libc++**, developed by the LLVM project.
+implementations of the C++ standard library. You can choose between `libstdc++`,
+provided by the GNU project, and `libc++`, developed by the LLVM project.
 
-また、このプロジェクトではビルド/テストするために利用できるDockerfile を含む。
+The project also includes a `Dockerfile` that can be used to build/test.
 
 ## Requisite
 
@@ -41,25 +41,28 @@ The output of the following command shows the results of the test.
 $ make check
 ```
 
-## Docker
+## Setting Up a Docker Environment for Build/Test
 
-このプロジェクトには Dockerfile が含まれている。 Docker 上でこのプロジェクトの
-ビルド/テストを行う手順を説明する。
-この Docker イメージは Ubuntu をベースにしている。
+This project supports building and testing within a Docker container. The process mirrors the standard
+build/test procedure, ensuring consistency across environments.
 
-### Build Docker image `swlib`
+### Key Points
+- The Docker image is based on `Ubuntu`.
+- Building and testing inside the container follow the same steps as running directly on a native system.
+
+### Steps
+
+#### Build Docker image `swlib`
 
 ```
 $ docker build -t swlib .
 ```
 
-### Create and run a new container from an image
+#### Create and run a new container from an image
 
 ```
 $ docker run --rm -it -v $PWD:/swlib -w /swlib swlib 
 ```
-
-上記のコンテナ上でビルド/テストする手順は、通常の手順と変わらない。
 
 ## License
 
