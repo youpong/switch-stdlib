@@ -1,3 +1,4 @@
+FORMATTER = clang-format -i
 CXX = @CXX@
 CXXFLAGS = @CXXFLAGS@
 LIBS = @LIBS@
@@ -12,10 +13,12 @@ clean:
 check: $(TARGET)
 	./$(TARGET)
 	@echo "*** Test passed. ***"
+format:
+	$(FORMATTER) $(SRCS)
 
 $(TARGET): $(OBJS)
 	$(CXX) -o $@ $^ $(LIBS)
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-.PHONY: all check clean
+.PHONY: all check clean format
